@@ -108,3 +108,21 @@ export const StaffGalleryUpdateSchema = z
     action: z.enum(['publish', 'unpublish', 'takedown']),
   })
   .strict();
+
+export const StaffAwardCreateSchema = z
+  .object({
+    recipientName: z.string().trim().min(2, 'Recipient name must be at least 2 characters').max(150),
+    awardTitle: z.string().trim().min(3, 'Award title must be at least 3 characters').max(200),
+    category: z.string().trim().min(2, 'Category must be specified').max(100),
+    year: z.number().int().min(2020).max(2050),
+    citation: z.string().trim().min(10, 'Citation must be at least 10 characters').max(2000),
+    imageUrl: z.string().trim().max(500).optional().or(z.literal('')),
+    orderIndex: z.number().int().min(0).max(1000).optional(),
+  })
+  .strict();
+
+export const StaffAwardDeleteSchema = z
+  .object({
+    id: identifier,
+  })
+  .strict();

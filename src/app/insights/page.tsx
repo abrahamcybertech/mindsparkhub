@@ -34,7 +34,7 @@ export default async function InsightsPage() {
               MindSpark Insights
             </h1>
             <p className="text-xl text-gold-400 font-serif font-medium">
-              Where every word lights a fire.
+              We spark growth and ignite Mindset.
             </p>
             <p className="text-lg text-navy-200 leading-relaxed pt-2">
               Thought leadership, academic productivity methods, skills frameworks, and character lessons curated by our Communication and Editorial Unit.

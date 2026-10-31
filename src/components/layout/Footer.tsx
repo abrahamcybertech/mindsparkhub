@@ -41,7 +41,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-navy-300 leading-relaxed max-w-sm">
-              Where every word lights a fire. Igniting minds, sparking purpose, and transforming lives across classrooms, campuses, and communities.
+              We spark growth and ignite Mindset. Igniting minds, sparking purpose, and transforming lives across classrooms, campuses, and communities.
             </p>
             <div className="pt-2">
               <p className="text-xs uppercase tracking-wider text-gold-400 font-semibold">
@@ -164,6 +164,11 @@ export function Footer() {
               <li>
                 <Link href="/structure" className="hover:text-gold-400 transition-colors">
                   Organisational Structure
+                </Link>
+              </li>
+              <li>
+                <Link href="/awards" className="hover:text-gold-400 transition-colors">
+                  Honors and Awards
                 </Link>
               </li>
               <li>

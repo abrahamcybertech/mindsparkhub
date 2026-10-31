@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_NG',
     url: 'https://mindsparkhub.org',
-    title: 'MindSpark Hub | Where every word lights a fire',
+    title: 'MindSpark Hub | We spark growth and ignite Mindset',
     description:
       'Equipping Nigerians with insights, mindset and motivation to strive for excellence and lead positive change.',
     siteName: 'MindSpark Hub',
@@ -70,7 +70,7 @@ export default function RootLayout({
     name: 'MindSpark Hub',
     url: 'https://mindsparkhub.org',
     logo: 'https://mindsparkhub.org/brand/mindspark.jpg',
-    slogan: 'Where every word lights a fire',
+    slogan: 'We spark growth and ignite Mindset',
     description:
       'MindSpark Hub equips Nigerians with the insights, mindset and motivation required to strive for excellence, reject mediocrity and unlock their full potential.',
     foundingLocation: {

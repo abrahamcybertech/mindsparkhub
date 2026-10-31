@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'MindSpark Hub',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://mindspark-hub.vercel.app',
-  tagline: 'Where every word lights a fire.',
+  tagline: 'We spark growth and ignite Mindset.',
   motto: 'We spark growth and ignite Mindset.',
   philosophy:
     'Igniting minds, sparking purpose, and transforming lives across classrooms, campuses, and communities.',
@@ -22,7 +22,7 @@ export const HOME = {
     'MindSpark Hub is a dynamic platform committed to equipping Nigerians with the insights, mindset and motivation required to strive for excellence, reject mediocrity and unlock their full potential.',
   primaryCta: 'Discover Our Impact',
   secondaryCta: 'Explore Our Programmes',
-  introductionTitle: 'Where Every Word Lights a Fire',
+  introductionTitle: 'We Spark Growth and Ignite Mindset',
   introductionBody:
     'We believe that genuine transformation begins with the mind. Through rigorous mentorship, practical skills training, moral discipline, and academic empowerment, MindSpark Hub mobilises young minds across Nigeria to reject complacency and embrace purpose.',
   vision: 'To build a Nigeria where citizens excel, innovate and lead positive change.',

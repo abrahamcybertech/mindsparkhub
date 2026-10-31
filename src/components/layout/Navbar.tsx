@@ -24,6 +24,7 @@ export function Navbar() {
       ],
     },
     { href: '/impact', label: 'Our Impact' },
+    { href: '/awards', label: 'Awards' },
     { href: '/insights', label: 'Insights' },
     { href: '/contact', label: 'Contact' },
   ];
@@ -50,7 +51,7 @@ export function Navbar() {
                 MindSpark <span className="text-gold-500">Hub</span>
               </span>
               <span className="text-xs text-navy-200 tracking-wide font-sans">
-                Where every word lights a fire
+                We spark growth and ignite Mindset
               </span>
             </div>
           </Link>

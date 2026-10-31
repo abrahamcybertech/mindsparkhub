@@ -55,10 +55,10 @@ export default function AboutPage() {
               <div className="p-8 bg-sand-50 rounded-2xl border border-sand-200 space-y-6 shadow-sm">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-gold-700">
-                    Our Slogan
+                    Our Motto
                   </p>
                   <p className="text-xl font-serif font-bold text-navy-900 mt-1">
-                    Where every word lights a fire.
+                    We spark growth and ignite Mindset.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-sand-200">

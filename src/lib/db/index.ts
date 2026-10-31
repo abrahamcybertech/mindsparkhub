@@ -144,6 +144,19 @@ const SQLITE_SCHEMA = `
     created_at TEXT NOT NULL
   );
 
+  CREATE TABLE IF NOT EXISTS awards (
+    id TEXT PRIMARY KEY,
+    recipient_name TEXT NOT NULL,
+    award_title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    citation TEXT NOT NULL,
+    image_url TEXT,
+    order_index INTEGER DEFAULT 0,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+
   CREATE TABLE IF NOT EXISTS audit_logs (
     id TEXT PRIMARY KEY,
     actor_id TEXT NOT NULL,

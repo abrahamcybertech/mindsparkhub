@@ -10,6 +10,7 @@ export type Permission =
   | 'gallery:manage'
   | 'gallery:safeguard_approve'
   | 'gallery:takedown'
+  | 'awards:manage'
   | 'inquiries:view'
   | 'inquiries:manage'
   | 'inquiries:export'
@@ -34,6 +35,7 @@ export function hasPermission(role: Role, permission: Permission): boolean {
     case 'articles:manage':
     case 'articles:publish':
     case 'gallery:manage':
+    case 'awards:manage':
       return ['SUPER_ADMIN', 'ADMIN', 'EDITOR'].includes(role);
 
     case 'gallery:safeguard_approve':
@@ -64,6 +66,7 @@ const ALL_PERMISSIONS: Permission[] = [
   'gallery:manage',
   'gallery:safeguard_approve',
   'gallery:takedown',
+  'awards:manage',
   'inquiries:view',
   'inquiries:manage',
   'inquiries:export',
