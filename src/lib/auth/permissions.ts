@@ -54,6 +54,29 @@ export function hasPermission(role: Role, permission: Permission): boolean {
   }
 }
 
+const ALL_PERMISSIONS: Permission[] = [
+  'content:read',
+  'programmes:manage',
+  'events:draft',
+  'events:approve',
+  'articles:manage',
+  'articles:publish',
+  'gallery:manage',
+  'gallery:safeguard_approve',
+  'gallery:takedown',
+  'inquiries:view',
+  'inquiries:manage',
+  'inquiries:export',
+  'inquiries:delete',
+  'users:manage',
+  'audit:view',
+  'security:manage',
+];
+
+export function permissionsForRole(role: Role): Permission[] {
+  return ALL_PERMISSIONS.filter((permission) => hasPermission(role, permission));
+}
+
 export function roleHierarchyLevel(role: Role): number {
   switch (role) {
     case 'SUPER_ADMIN':

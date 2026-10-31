@@ -1,0 +1,26 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.org.mindsparkhub.app",
+        "paths": [
+          "/insights/*",
+          "/programmes/*",
+          "/events/*",
+          "/about",
+          "/contact",
+          "/get-involved",
+          "/privacy",
+          "/terms",
+          "/security"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TEAMID.org.mindsparkhub.app"
+    ]
+  }
+}

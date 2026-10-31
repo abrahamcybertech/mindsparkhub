@@ -185,7 +185,68 @@ const SQLITE_SCHEMA = `
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
+  CREATE TABLE IF NOT EXISTS mobile_access_tokens (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    token_hash TEXT UNIQUE NOT NULL,
+    expires_at TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+
+  CREATE TABLE IF NOT EXISTS mobile_refresh_tokens (
+    id TEXT PRIMARY KEY,
+    family_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    token_hash TEXT UNIQUE NOT NULL,
+    expires_at TEXT NOT NULL,
+    used_at TEXT,
+    revoked_at TEXT,
+    replaced_by TEXT,
+    ip_hash TEXT NOT NULL,
+    user_agent TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+
+  CREATE TABLE IF NOT EXISTS mobile_mfa_challenges (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    token_hash TEXT UNIQUE NOT NULL,
+    expires_at TEXT NOT NULL,
+    consumed_at TEXT,
+    attempts INTEGER DEFAULT 0,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+
+  CREATE TABLE IF NOT EXISTS public_challenges (
+    id TEXT PRIMARY KEY,
+    token_hash TEXT UNIQUE NOT NULL,
+    device_hash TEXT NOT NULL,
+    issued_at TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    consumed_at TEXT,
+    created_at TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS image_reports (
+    id TEXT PRIMARY KEY,
+    gallery_item_id TEXT NOT NULL,
+    reason TEXT NOT NULL,
+    details TEXT,
+    contact_email TEXT,
+    status TEXT DEFAULT 'NEW',
+    created_at TEXT NOT NULL
+  );
+
   CREATE INDEX IF NOT EXISTS idx_password_reset_hash ON password_reset_tokens(token_hash);
+  CREATE INDEX IF NOT EXISTS idx_mobile_access_hash ON mobile_access_tokens(token_hash);
+  CREATE INDEX IF NOT EXISTS idx_mobile_refresh_hash ON mobile_refresh_tokens(token_hash);
+  CREATE INDEX IF NOT EXISTS idx_mobile_refresh_family ON mobile_refresh_tokens(family_id);
+  CREATE INDEX IF NOT EXISTS idx_mobile_mfa_hash ON mobile_mfa_challenges(token_hash);
+  CREATE INDEX IF NOT EXISTS idx_public_challenge_hash ON public_challenges(token_hash);
+  CREATE INDEX IF NOT EXISTS idx_image_reports_status ON image_reports(status);
   CREATE INDEX IF NOT EXISTS idx_sessions_token ON sessions(session_token);
   CREATE INDEX IF NOT EXISTS idx_events_status ON events(status);
   CREATE INDEX IF NOT EXISTS idx_gallery_pub ON gallery_items(is_published, category);

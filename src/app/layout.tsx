@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     icon: '/brand/mindspark.jpg',
     apple: '/brand/mindspark.jpg',
   },
+  itunes: {
+    appId: 'org.mindsparkhub.app',
+  },
 };
 
 export default function RootLayout({
