@@ -14,4 +14,4 @@ extracted_images
 images
 public_assets
 *.md
-supabase
+/supabase
