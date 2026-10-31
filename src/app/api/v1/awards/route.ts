@@ -58,7 +58,8 @@ export async function GET(req: NextRequest) {
       { awards, categories },
       { cache: 'public, s-maxage=60, stale-while-revalidate=300' }
     );
-  } catch {
+  } catch (err) {
+    console.error('Awards API error:', err);
     return apiError(503, 'Awards and honors are temporarily unavailable.', 'SERVICE_UNAVAILABLE');
   }
 }
