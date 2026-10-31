@@ -1,0 +1,231 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MindSpark Hub Official API",
+    "version": "1.0.0",
+    "description": "Versioned REST API for MindSpark Hub web and mobile platforms."
+  },
+  "servers": [
+    {
+      "url": "https://mindspark-hub.vercel.app/api/v1",
+      "description": "Production API Server"
+    }
+  ],
+  "paths": {
+    "/challenge": {
+      "post": {
+        "summary": "Generate anti bot challenge token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deviceId": { "type": "string" }
+                },
+                "required": ["deviceId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Challenge token issued" }
+        }
+      }
+    },
+    "/home": {
+      "get": {
+        "summary": "Get aggregate home screen content",
+        "responses": {
+          "200": { "description": "Home screen data" }
+        }
+      }
+    },
+    "/programmes": {
+      "get": {
+        "summary": "List all active impact programmes",
+        "responses": {
+          "200": { "description": "Programmes list" }
+        }
+      }
+    },
+    "/programmes/{slug}": {
+      "get": {
+        "summary": "Get programme details, structure, and related events",
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Programme detail" }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "summary": "List all confirmed and approved events",
+        "responses": {
+          "200": { "description": "Events list" }
+        }
+      }
+    },
+    "/gallery": {
+      "get": {
+        "summary": "Get verified impact gallery photographs",
+        "parameters": [
+          { "name": "category", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Gallery items" }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "summary": "List published insights and articles",
+        "parameters": [
+          { "name": "category", "in": "query", "schema": { "type": "string" } },
+          { "name": "search", "in": "query", "schema": { "type": "string" } },
+          { "name": "page", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Articles list" }
+        }
+      }
+    },
+    "/articles/{slug}": {
+      "get": {
+        "summary": "Get article reader content with structured blocks",
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Article details" }
+        }
+      }
+    },
+    "/structure": {
+      "get": {
+        "summary": "Get institutional structure, 8 units, and excos",
+        "responses": {
+          "200": { "description": "Governance structure" }
+        }
+      }
+    },
+    "/legal/{doc}": {
+      "get": {
+        "summary": "Get server hosted legal documents (privacy, terms, security)",
+        "parameters": [
+          { "name": "doc", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Legal document" }
+        }
+      }
+    },
+    "/submissions": {
+      "post": {
+        "summary": "Submit inquiry or participation form",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["type", "fullName", "email", "message", "consent", "challengeToken", "deviceId"],
+                "properties": {
+                  "type": { "type": "string" },
+                  "fullName": { "type": "string" },
+                  "email": { "type": "string" },
+                  "message": { "type": "string" },
+                  "consent": { "type": "boolean" },
+                  "challengeToken": { "type": "string" },
+                  "deviceId": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Reference code returned" }
+        }
+      }
+    },
+    "/reports": {
+      "post": {
+        "summary": "Submit photographic takedown request",
+        "responses": {
+          "200": { "description": "Takedown report registered" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Staff initial credential authentication",
+        "responses": {
+          "200": { "description": "MFA challenge issued" }
+        }
+      }
+    },
+    "/auth/mfa": {
+      "post": {
+        "summary": "Verify 6 digit TOTP code and issue tokens",
+        "responses": {
+          "200": { "description": "Token pair and permissions returned" }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "summary": "Rotate refresh token family",
+        "responses": {
+          "200": { "description": "New token pair returned" }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Revoke active refresh token and session",
+        "responses": {
+          "200": { "description": "Logged out" }
+        }
+      }
+    },
+    "/admin/summary": {
+      "get": {
+        "summary": "Get administrative metrics summary",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Summary counts" }
+        }
+      }
+    },
+    "/admin/submissions": {
+      "get": { "summary": "List administrative inquiries" },
+      "patch": { "summary": "Update inquiry status" }
+    },
+    "/admin/events": {
+      "get": { "summary": "List all events for approval" },
+      "patch": { "summary": "Approve or decline event" }
+    },
+    "/admin/gallery": {
+      "get": { "summary": "List all gallery items" },
+      "patch": { "summary": "Toggle gallery publication" }
+    },
+    "/admin/articles": {
+      "get": { "summary": "List all articles" },
+      "patch": { "summary": "Toggle article publication" }
+    },
+    "/admin/audit": {
+      "get": { "summary": "Get append only cryptographic audit logs (Super Admin)" }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

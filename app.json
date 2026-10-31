@@ -1,0 +1,85 @@
+{
+  "expo": {
+    "name": "MindSpark Hub",
+    "slug": "mindspark-hub",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "mindsparkhub",
+    "userInterfaceStyle": "automatic",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0D2748",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain"
+        }
+      ],
+      "expo-secure-store",
+      "expo-web-browser",
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#FFC107"
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.mindsparkhub.app",
+      "associatedDomains": [
+        "applinks:mindspark-hub.vercel.app",
+        "applinks:mindsparkhub.org"
+      ],
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "MindSpark Hub adds confirmed events to your calendar only when you ask it to.",
+        "NSFaceIDUsageDescription": "Use Face ID to reopen the staff area without typing your password again.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "org.mindsparkhub.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0D2748",
+        "monochromeImage": "./assets/notification-icon.png"
+      },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "mindspark-hub.vercel.app"
+            },
+            {
+              "scheme": "https",
+              "host": "mindsparkhub.org"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "privacyPolicyUrl": "https://mindspark-hub.vercel.app/privacy",
+      "termsUrl": "https://mindspark-hub.vercel.app/terms",
+      "securityUrl": "https://mindspark-hub.vercel.app/security"
+    }
+  }
+}
