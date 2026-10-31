@@ -66,7 +66,10 @@
               "host": "mindsparkhub.org"
             }
           ],
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
       ]
     },
@@ -79,7 +82,16 @@
     "extra": {
       "privacyPolicyUrl": "https://mindspark-hub.vercel.app/privacy",
       "termsUrl": "https://mindspark-hub.vercel.app/terms",
-      "securityUrl": "https://mindspark-hub.vercel.app/security"
-    }
+      "securityUrl": "https://mindspark-hub.vercel.app/security",
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "5940ab46-ce17-4cd1-9fe2-ff6e2a555c45"
+      }
+    },
+    "owner": "nickycodes"
   }
 }
