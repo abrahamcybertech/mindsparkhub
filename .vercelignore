@@ -1,0 +1,17 @@
+.next
+node_modules
+mindspark.db
+*.db
+*.db-shm
+*.db-wal
+tsconfig.tsbuildinfo
+public/uploads
+.env
+.env.*
+!.env.example
+docs
+extracted_images
+images
+public_assets
+*.md
+supabase

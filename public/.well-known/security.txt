@@ -1,0 +1,6 @@
+Contact: mailto:security@mindsparkhub.org
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://mindsparkhub.org/.well-known/security.txt
+Policy: https://mindsparkhub.org/security
+Acknowledgments: https://mindsparkhub.org/security

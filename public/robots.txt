@@ -1,0 +1,20 @@
+# MindSpark Hub Official Robots Policy
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /structure
+Allow: /programmes/
+Allow: /impact
+Allow: /insights
+Allow: /get-involved
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /security
+
+# Disallow private operational, administrative and API routes
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://mindsparkhub.org/sitemap.xml
