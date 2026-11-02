@@ -1,4 +1,4 @@
-export type Role = 'SUPER_ADMIN' | 'ADMIN' | 'EDITOR' | 'PROGRAMME_MANAGER';
+export type Role = 'SUPER_ADMIN' | 'ADMIN' | 'EDITOR' | 'PROGRAMME_MANAGER' | 'FINANCE';
 
 export type Permission =
   | 'content:read'
@@ -17,7 +17,11 @@ export type Permission =
   | 'inquiries:delete'
   | 'users:manage'
   | 'audit:view'
-  | 'security:manage';
+  | 'security:manage'
+  | 'donations:view'
+  | 'donations:manage'
+  | 'donations:export'
+  | 'donations:refund';
 
 export function hasPermission(role: Role, permission: Permission): boolean {
   switch (permission) {
@@ -45,6 +49,12 @@ export function hasPermission(role: Role, permission: Permission): boolean {
     case 'inquiries:export':
     case 'audit:view':
       return ['SUPER_ADMIN', 'ADMIN'].includes(role);
+
+    case 'donations:view':
+    case 'donations:manage':
+    case 'donations:export':
+    case 'donations:refund':
+      return ['SUPER_ADMIN', 'ADMIN', 'FINANCE'].includes(role);
 
     case 'inquiries:delete':
     case 'users:manage':

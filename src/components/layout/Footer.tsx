@@ -153,7 +153,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-wider text-white">
-              Institution
+              Quick Links
             </p>
             <ul className="space-y-2 text-sm">
               <li>
@@ -174,6 +174,11 @@ export function Footer() {
               <li>
                 <Link href="/insights" className="hover:text-gold-400 transition-colors">
                   Insights and Resources
+                </Link>
+              </li>
+              <li>
+                <Link href="/donate" className="hover:text-gold-400 transition-colors">
+                  Donate
                 </Link>
               </li>
               <li>

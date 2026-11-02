@@ -104,3 +104,29 @@ export const GalleryItemSchema = z.object({
   message: 'Child Safeguarding Gate: You cannot publish photographs depicting minors without confirmed institutional consent and a verified reference code.',
   path: ['consentVerified'],
 });
+
+export const DonationStartSchema = z.object({
+  donationType: z.enum(['once', 'monthly']),
+  amount: z.number().int().positive(),
+  designation: z.enum(['general', 'ssi', 'cs', 'ce']),
+  donorName: z.string().trim().max(100).optional().or(z.literal('')),
+  donorEmail: z.string().trim().email('Please provide a valid email address'),
+  donorPhone: z.string().trim().max(30).optional().or(z.literal('')),
+  isAnonymous: z.boolean().optional().default(false),
+  note: z.string().trim().max(500).optional().or(z.literal('')),
+  consentGiven: z.boolean().refine((val) => val === true, {
+    message: 'You must consent to the privacy notice before giving.',
+  }),
+  paymentMethod: z.enum(['card', 'bank_transfer', 'ussd']).optional().default('card'),
+  website_url_check: z.string().max(0, 'Automated submission detected').optional(),
+});
+
+export const DonationSettingsSchema = z.object({
+  suggestedAmounts: z.string(),
+  minAmount: z.string(),
+  maxAmount: z.string(),
+  enabledPaymentMethods: z.string(),
+  bankTransferDetails: z.string(),
+  transparencyText: z.string(),
+  publicDonorWallEnabled: z.boolean().optional(),
+});

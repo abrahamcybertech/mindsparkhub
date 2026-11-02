@@ -253,6 +253,48 @@ const SQLITE_SCHEMA = `
     created_at TEXT NOT NULL
   );
 
+  CREATE TABLE IF NOT EXISTS donations (
+    id TEXT PRIMARY KEY,
+    reference_code TEXT UNIQUE NOT NULL,
+    amount INTEGER NOT NULL,
+    currency TEXT NOT NULL DEFAULT 'NGN',
+    donation_type TEXT NOT NULL,
+    designation TEXT NOT NULL,
+    donor_name TEXT,
+    donor_email TEXT NOT NULL,
+    donor_phone TEXT,
+    is_anonymous INTEGER DEFAULT 0,
+    note TEXT,
+    consent_given INTEGER NOT NULL,
+    consent_timestamp TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending',
+    provider TEXT NOT NULL DEFAULT 'paystack',
+    provider_reference TEXT,
+    subscription_code TEXT,
+    subscription_status TEXT,
+    cancel_url TEXT,
+    ip_address TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS donation_settings (
+    key TEXT PRIMARY KEY,
+    value TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS donation_status_history (
+    id TEXT PRIMARY KEY,
+    donation_id TEXT NOT NULL,
+    status TEXT NOT NULL,
+    actor_id TEXT,
+    actor_role TEXT,
+    note TEXT,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (donation_id) REFERENCES donations(id) ON DELETE CASCADE
+  );
+
   CREATE INDEX IF NOT EXISTS idx_password_reset_hash ON password_reset_tokens(token_hash);
   CREATE INDEX IF NOT EXISTS idx_mobile_access_hash ON mobile_access_tokens(token_hash);
   CREATE INDEX IF NOT EXISTS idx_mobile_refresh_hash ON mobile_refresh_tokens(token_hash);
@@ -266,6 +308,9 @@ const SQLITE_SCHEMA = `
   CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
   CREATE INDEX IF NOT EXISTS idx_submissions_ref ON submissions(reference_code);
   CREATE INDEX IF NOT EXISTS idx_audit_time ON audit_logs(created_at);
+  CREATE INDEX IF NOT EXISTS idx_donations_ref ON donations(reference_code);
+  CREATE INDEX IF NOT EXISTS idx_donations_status ON donations(status);
+  CREATE INDEX IF NOT EXISTS idx_donations_email ON donations(donor_email);
 `;
 
 let backendPromise: Promise<Backend> | null = null;

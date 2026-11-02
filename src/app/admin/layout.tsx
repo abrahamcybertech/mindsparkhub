@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Layers,
   Award,
+  Heart,
 } from 'lucide-react';
 import { AdminSignOutButton } from '@/components/admin/SignOutButton';
 
@@ -44,6 +45,9 @@ export default async function AdminLayout({
     { href: '/admin/articles', label: 'Insights Articles', icon: BookOpen },
     { href: '/admin/awards', label: 'Awards and Honors', icon: Award },
     { href: '/admin/submissions', label: 'Applications and Inquiries', icon: Inbox },
+    ...(session.role === 'SUPER_ADMIN' || session.role === 'ADMIN' || session.role === 'FINANCE'
+      ? [{ href: '/admin/donations', label: 'Donations', icon: Heart }]
+      : []),
     ...(canManageTeam
       ? [{ href: '/admin/team', label: 'Structure and Exco', icon: UserPlus }]
       : []),

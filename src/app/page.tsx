@@ -383,12 +383,18 @@ export default async function HomePage() {
             <span className="text-gold-500">We are building it.</span>
           </h2>
           <p className="text-lg text-navy-200 max-w-2xl mx-auto leading-relaxed">
-            Join a structured generation of Nigerians committed to excellence, character, and societal transformation. Partner with us, volunteer as a mentor, or participate in upcoming programmes.
+            Join a structured generation of Nigerians committed to excellence, character, and societal transformation. Partner with us, volunteer as a mentor, or support the mission through giving.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
-              href="/get-involved"
+              href="/donate"
               className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold text-navy-900 bg-gold-500 hover:bg-gold-400 rounded transition-all shadow-md"
+            >
+              Donate
+            </Link>
+            <Link
+              href="/get-involved"
+              className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold text-white bg-navy-800 hover:bg-navy-700 border border-navy-700 rounded transition-all"
             >
               Get Involved With Us
             </Link>

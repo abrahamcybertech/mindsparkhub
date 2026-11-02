@@ -26,6 +26,7 @@ export function Navbar() {
     { href: '/impact', label: 'Our Impact' },
     { href: '/awards', label: 'Awards' },
     { href: '/insights', label: 'Insights' },
+    { href: '/donate', label: 'Donate' },
     { href: '/contact', label: 'Contact' },
   ];
 
